@@ -10,5 +10,12 @@ module.exports = app => {
         // REDIRECT TO THE ROOT
         return res.redirect('/');
     })
+    Post.find({})
+    .then (post => {
+        res.render("posts-index", { posts });
+    })
+    .catch(err => {
+        console.log(err.message);
+    })
   });
 };
