@@ -25,13 +25,13 @@ app.use(expressValidator());
 
 
 // Routes
-app.get('/', (req, res) => {
-  res.render('starter');
-});
-
-app.get('/posts/new', (req, res) => {
-    res.render('posts-new');
-});
+// app.get('/', (req, res) => {
+//   res.render('posts-index');
+// });
+//
+// app.get('/posts/new', (req, res) => {
+//     res.render('posts-new');
+// });
 
 // require('./controllers/posts.js')(app);
 //
