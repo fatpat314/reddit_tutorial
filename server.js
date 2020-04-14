@@ -9,9 +9,8 @@ const app = express();
 // Middleware
 const exphbs  = require('express-handlebars');
 
-require('./controllers/posts.js')(app);
 
-require('./data/reddit-db');
+
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -36,7 +35,7 @@ app.use(expressValidator());
 // require('./controllers/posts.js')(app);
 //
 require('./data/reddit-db');
-
+require('./controllers/posts.js')(app);
 
 
 // Start Server

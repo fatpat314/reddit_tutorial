@@ -11,22 +11,22 @@ module.exports = (app) => {
         });
         // });
 
-    app.get('/posts/new', (req, res) => {
+    app.get('/post/new', (req, res) => {
         res.render('posts-new');
-        });
+            });
   // CREATE
-  app.post("/posts/new", (req, res) => {
-    //INSTANTIATE INSTANCE OF POST MODEL
-    const post = new Post(req.body);
+    app.post("/post/new", (req, res) => {
+                //INSTANTIATE INSTANCE OF POST MODEL
+        const post = new Post(req.body);
 
 
 
     // SAVE INSTANCE OF POST MODEL TO DB
-    post.save((err, post) => {
-        // REDIRECT TO THE ROOT
-        return res.redirect('/');
+        post.save((err, post) => {
+            // REDIRECT TO THE ROOT
+            return res.redirect('/');
+        })
     })
-})
     app.get("/posts/:id", function(req, res){
         //lood up the post
         Post.findById(req.params.id).lean()
