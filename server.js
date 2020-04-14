@@ -35,7 +35,7 @@ app.use(expressValidator());
 
 // require('./controllers/posts.js')(app);
 //
-// require('./data/reddit-db');
+require('./data/reddit-db');
 
 
 
