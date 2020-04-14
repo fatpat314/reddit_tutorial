@@ -37,6 +37,9 @@ app.use(expressValidator());
 require('./data/reddit-db');
 require('./controllers/posts.js')(app);
 
+module.exports = app;
+
+
 
 // Start Server
 
