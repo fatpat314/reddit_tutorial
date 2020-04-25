@@ -14,17 +14,21 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="/">Reddit.js</a>
-  <a href="/post/new" class="btn btn-primary navbar-btn">New Post</a>
+  {{#if currentUser}}
+    <a href="/posts/new" class="btn btn-primary navbar-btn">New Post</a>
+  {{/if}}
 
 
 
-    <ul class="nav navbar-nav navbar-right">
+  <ul class="nav navbar-nav navbar-right">
+    {{#if currentUser}}
       <li><a href="/logout">Logout</a></li>
-      <h1> </h1>
+    {{else}}
       <li><a href="/login">Login</a></li>
-      <h1> </h1>
       <li><a href="/sign-up">Sign Up</a></li>
-    </ul>
+    {{/if}}
+  </ul>
+
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
