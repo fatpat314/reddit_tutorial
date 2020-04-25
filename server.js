@@ -1,13 +1,23 @@
 // Require Libraries
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const express = require('express');
+var cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 
 // App Setup
 const app = express();
 
 // Middleware
 const exphbs  = require('express-handlebars');
+//
+// var cookieParser = require('cookie-parser');
+// const jwt = require('jsonwebtoken');
+
+// const app = express();
+
+app.use(cookieParser()); // Add this after you initialize express.
 
 
 
@@ -37,6 +47,7 @@ app.use(expressValidator());
 require('./data/reddit-db');
 require('./controllers/posts.js')(app);
 require('./controllers/comments.js')(app);
+require('./controllers/auth.js')(app);
 
 
 module.exports = app;
