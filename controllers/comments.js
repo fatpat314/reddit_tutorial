@@ -6,9 +6,10 @@ module.exports = function(app) {
     const Comment = require('../models/comment.js');
 
     // CREATE Comment
-    app.post("/posts/:postId/comments", function(req, res) {
+    app.post("/posts/:postsId/comments", function(req, res) {
       // INSTANTIATE INSTANCE OF MODEL
       const comment = new Comment(req.body);
+      var currentUser = req.user;
 
       // SAVE INSTANCE OF Comment MODEL TO DB
       comment
@@ -17,7 +18,7 @@ module.exports = function(app) {
           return Post.findById(req.params.postId);
         })
         .then(post => {
-          post.comments.unshift(comment);
+          post.comments.unshift(comment, currentUser);
           return post.save();
         })
         .then(post => {

@@ -45,12 +45,15 @@ module.exports = function (app) {
           }
       });
 
+
+
       app.get("/posts/:id", function (req, res) {
           var currentUser = req.user;
           // LOOK UP THE POST
 
-          Post.findById(req.params.id).populate('comments').populate('author')
+          Post.findById(req.params.id).populate('comments').populate('author').lean()
               .then(post => {
+                  console.log(post)
                   res.render("posts-show", { post, currentUser });
               })
               .catch(err => {
