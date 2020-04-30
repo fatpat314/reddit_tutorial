@@ -6,7 +6,7 @@ module.exports = function(app) {
     const Comment = require('../models/comment.js');
 
     // CREATE Comment
-    app.post("/posts/:postsId/comments", function(req, res) {
+    app.post("/posts/:postId/comments", function(req, res) {
       // INSTANTIATE INSTANCE OF MODEL
       const comment = new Comment(req.body);
       var currentUser = req.user;
