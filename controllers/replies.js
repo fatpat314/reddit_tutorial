@@ -19,10 +19,10 @@ module.exports = app => {
       });
   });
 
-  // CREATE REPLY
-  app.post("/posts/:postId/comments/:commentId/replies", (req, res) => {
-    console.log(req.body);
-  });
+  // // CREATE REPLY
+  // app.post("/posts/:postId/comments/:commentId/replies", (req, res) => {
+  //   console.log(req.body);
+  // });
   // CREATE REPLY
   app.post("/posts/:postId/comments/:commentId/replies", (req, res) => {
       // TURN REPLY INTO A COMMENT OBJECT

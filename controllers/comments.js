@@ -4,9 +4,10 @@ const User = require('../models/user.js');
 module.exports = function (app) {
     // CREATE Comment
     app.post("/posts/:postId/comments", function (req, res) {
-        const comment = new Comment(req.body);
-        comment.author = req.user._id;
-        comment
+        if (req.user) {
+            const comment = new Comment(req.body);
+            comment.author = req.user._id;
+            comment
             .save()
             .then(comment => {
                 return Promise.all([
@@ -25,5 +26,8 @@ module.exports = function (app) {
             .catch(err => {
                 console.log(err);
             });
+        } else {
+            return res.status(401); // UNAUTHORIZED
+        }
     });
 };
