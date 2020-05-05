@@ -17,6 +17,8 @@ const exphbs  = require('express-handlebars');
 
 // const app = express();
 
+app.use(express.static('public'));
+
 app.use(cookieParser()); // Add this after you initialize express.
 
 
@@ -63,6 +65,7 @@ require('./controllers/posts.js')(app);
 require('./controllers/comments.js')(app);
 require('./controllers/auth.js')(app);
 require('./controllers/replies.js')(app);
+
 
 
 module.exports = app;
