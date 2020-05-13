@@ -9,13 +9,14 @@ const agent = chai.request.agent(app);
 // Import the Post model from our models folder so we
 // we can use it in our tests.
 const Post = require('../models/posts.js');
+const User = require('../models/user.js')
 const server = require('../server');
 
 chai.should();
 chai.use(chaiHttp);
 
 describe('Posts', function() {
-  const agent = chai.request.agent(server);
+  const agent = chai.request.agent(app);
   // Post that we'll use for testing purposes
   const newPost = {
       title: 'post title',
@@ -46,7 +47,8 @@ before(function (done) {
     .then(function (initialDocCount) {
         chai
             .request(app)
-            .post("/post/new")
+            agent
+            .post("/posts/new")
             // This line fakes a form post,
             // since we're not actually filling out a form
             .set("content-type", "application/x-www-form-urlencoded")
@@ -72,10 +74,13 @@ before(function (done) {
     .catch(function (err) {
         done(err);
     });
-    after(function (done) {
+// });
+
+after(function (done) {
   Post.findOneAndDelete(newPost)
   .then(function (res) {
       agent.close()
+
 
       User.findOneAndDelete({
           username: user.username
@@ -90,6 +95,7 @@ before(function (done) {
   .catch(function (err) {
       done(err);
   });
+
 });
 });
 
