@@ -22,6 +22,9 @@ app.use(express.static('public'));
 app.use(cookieParser()); // Add this after you initialize express.
 
 
+app.use(express.static('public'));
+
+
 
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
